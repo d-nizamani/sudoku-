@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sudoku Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 15px;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 3px solid black;
+      margin: 15px auto 35px;
+    }
+
+    td {
+      width: 30px;
+      height: 30px;
+      border: 1px solid gray;
+      text-align: center;
+    }
+
+    td:nth-child(3n) {
+      border-right: 3px solid black;
+    }
+
+    tr:nth-child(3n) td {
+      border-bottom: 3px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sudoku Solutions</h1>
+  <p>Solutions for your latest downloaded puzzle pack.</p>
+
+  <a href="{{ url_for('index') }}">Back to generator</a>
+
+  {% for item in answers %}
+
+    <h2>Puzzle {{ item.number }}</h2>
+    <p>Difficulty: {{ item.difficulty }}</p>
+
+    <table>
+      {% for row in item.solution %}
+        <tr>
+          {% for number in row %}
+            <td>{{ number }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% endfor %}
+
+</body>
+</html>

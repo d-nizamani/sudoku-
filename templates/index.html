@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Your Sudoku, Your Way</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>Your Sudoku, Your Way</h1>
+  <p>Print it. Solve it. Challenge your mind.</p>
+
+  {% if error %}
+    <p>{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty" name="difficulty">
+      {% for difficulty in difficulties %}
+        <option value="{{ difficulty }}">{{ difficulty }}</option>
+      {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label for="count">Number of puzzles:</label>
+    <input id="count" name="count" type="number"
+           min="1" max="30" value="4" required>
+
+    <br><br>
+
+    <label for="per_page">Puzzles per page:</label>
+    <select id="per_page" name="per_page">
+      {% for n in per_page_options %}
+        <option value="{{ n }}" {% if n == 2 %}selected{% endif %}>
+          {{ n }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label for="paper">Paper size:</label>
+    <select id="paper" name="paper">
+      {% for value, label in papers.items() %}
+        <option value="{{ value }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+
+    <br><br>
+
+    <button type="submit"> Create PDF & Print It! ^_^</button>
+
+    <p>
+      The PDF contains puzzles only. Ready to check your answers? Click here 
+      <a href="{{ url_for('solutions') }}" target="_blank">
+      Did You Nail It?
+      </a>
+    </p>
+
+    <p>Stay curious. Stay puzzled.</p>
+
+  </form>
+
+</body>
+</html>

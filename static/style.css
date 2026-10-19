@@ -1,0 +1,46 @@
+body {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 15px;
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+form {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333333;
+}
